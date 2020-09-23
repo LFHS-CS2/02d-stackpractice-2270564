@@ -19,7 +19,24 @@ class Main {
      */
      public static void splitStack(Stack<Integer> s)
     {
-        
+        ArrayList<Integer> pos = new ArrayList<Integer>();
+        while (!s.isEmpty())
+        {
+            pos.add(s.pop());
+        }
+        for (int i = 0; i < pos.size(); i++)
+        {
+            if (pos.get(i) < 0)
+            {
+                s.push(pos.get(i));
+                pos.remove(i);
+                i--;
+            }
+        }
+        for (int i = 0; i < pos.size(); i++)
+        {
+            s.push(pos.get(i));
+        }
     }
 
     /**
@@ -36,7 +53,16 @@ class Main {
      */
     public static void stutter(Stack<Integer> s)
     {
-       
+       ArrayList<Integer> stut = new ArrayList<Integer>();
+       while (!s.isEmpty())
+       {
+           stut.add(s.pop());
+        }
+        for (int i = stut.size() - 1; i >= 0; i--)
+        {
+            s.push(stut.get(i));
+            s.push(stut.get(i));
+        }
     }
 
 }
